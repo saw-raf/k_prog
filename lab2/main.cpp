@@ -12,14 +12,8 @@ int main(int argc, char* argv[])
 		int rozmiar=stoi(argv[1]);
 		if(rozmiar<0)
 			throw invalid_argument("");
-		try
-		{
-			int wspolczynnik=stoi(argv[2]);
-		}
-		catch(logic_error a)
-		{
-			cout<<"Podaj nr wspolczynnika"<<endl;
-		}
+		if(argc<3)
+			throw logic_error("");
 		WierszTrojkataPascala* wiersz=new WierszTrojkataPascala(rozmiar);
 		for(int i=2;i<argc;i++)
 		{
@@ -45,7 +39,7 @@ int main(int argc, char* argv[])
 	}
 	catch(logic_error e)
 	{
-		cout<<"Podaj nr wiersza"<<endl;
+		cout<<"Podaj nr wiersza oraz nr wspolczynnika"<<endl;
 	}
 	return 0;
 }
