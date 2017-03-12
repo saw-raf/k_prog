@@ -4,13 +4,13 @@ public class Divider{
 			return -1;
 		else if(n==0)
 			return 0;
+		else if(n<0)
+			return -2;
 		else{
-			int max=1;
-			for(int i=2; i*i<=n; i++){
-				if(n%i==0 && max < (n/i))
-					max=(n/i);
+			for(int i=n-1; i>=1; i--){
+				if(n%i==0)
+					return i;
 			}
-			return max;
 		}
 	}
 	public static void main(String[] args){
@@ -23,6 +23,8 @@ public class Divider{
 					System.out.println("Dla 1 nie potrafie znaleźć największego dzielnika właściwego");
 				else if(divider==0)
 					System.out.println("Zero dzieli sie przez kazda liczbe naturalna rozna od zera!!!");
+				else if(divider==-2)
+					System.out.println("Miales podac liczbe naturalna!!!");
 				else
 					System.out.println(divider);
 			}
