@@ -16,8 +16,9 @@ int main(int argc, char* argv[])
 		{
 			int wspolczynnik=stoi(argv[2]);
 		}
-		catch(const invalid_argument a)
+		catch(logic_error a)
 		{
+			cout<<"Podaj nr wspolczynnika"<<endl;
 		}
 		WierszTrojkataPascala* wiersz=new WierszTrojkataPascala(rozmiar);
 		for(int i=2;i<argc;i++)
@@ -25,7 +26,7 @@ int main(int argc, char* argv[])
 			try
 			{
 				int wspolczynnik=stoi(argv[i]);
-				cout<<argv[i]<<": "<<wiersz->wspolczynnik(wspolczynnik)<<endl;
+				cout<<argv[i]<<": "<< wiersz->wspolczynnik(wspolczynnik)<<endl;
 			}
 			catch(const invalid_argument& a)
 			{

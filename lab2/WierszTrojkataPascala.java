@@ -14,7 +14,7 @@ public class WierszTrojkataPascala{
 	}
 
 	public int wspolczynnik(int m) throws ArrayIndexOutOfBoundsException{
-		if(m>rozmiar || m<0)
+		if(m>=rozmiar || m<0)
 			throw new ArrayIndexOutOfBoundsException();	
 		return wiersz[m];
 	}

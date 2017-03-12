@@ -11,7 +11,7 @@ WierszTrojkataPascala::WierszTrojkataPascala(int n)
 
 int WierszTrojkataPascala::wspolczynnik(int m) throw (string)
 {
-	if(m>rozmiar || m<0)
+	if(m>=rozmiar || m<0)
 		throw (string)"Zly rozmiar tablicy";
 	return wiersz[m];
 }
