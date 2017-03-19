@@ -2,6 +2,7 @@ class BrakArgumentow extends Exception {}
 class BrakParametrow extends Exception {}
 class NiezdefiniowanaFigura extends Exception {}
 class KoniecProgramu extends Exception {}
+class NiedodatniParametr extends Exception {}
 
 
 
@@ -29,6 +30,8 @@ public class Geometria{
 						case 'o':
 							iteratorParametrow++;
 							double r=Double.parseDouble(args[iteratorParametrow-1]);
+							if(r<=0)
+								throw new NiedodatniParametr();
 							tablicaFigur[iteratorFigur]= new Okrag(r);
 							iteratorFigur++;
 							break;
@@ -38,8 +41,12 @@ public class Geometria{
 							for(int j=0;j<4;j++){
 								iteratorParametrow++;
 								c[j]=Double.parseDouble(args[iteratorParametrow-1]);
+								if(c[j]<=0)
+									throw new NiedodatniParametr();
 							}
 							double kat=Double.parseDouble(args[iteratorParametrow]);
+							if(kat<=0)
+								throw new NiedodatniParametr();
 							try{
 								tablicaFigur[iteratorFigur]= new Kwadrat(c[0],c[1],c[2],c[3],kat);
 								iteratorParametrow++;
@@ -59,7 +66,7 @@ public class Geometria{
 									}
 									catch(NieRomb g)
 									{
-										System.out.println("Nie potrafie zrobic czworokata dla: "+c[0]+" "+c[1]+" "+c[2]+" "+c[3]+" "+kat);
+										System.out.println("c: "+c[0]+" "+c[1]+" "+c[2]+" "+c[3]+" "+kat+" nie potrafie zrobic czworokata dla tych wartosci");
 									}
 								}
 							}
@@ -67,12 +74,16 @@ public class Geometria{
 						case 'p':
 							iteratorParametrow++;
 							double p=Double.parseDouble(args[iteratorParametrow-1]);
+							if(p<=0)
+								throw new NiedodatniParametr();
 							tablicaFigur[iteratorFigur]= new Pieciokat(p);
 							iteratorFigur++;
 							break;
 						case 's':
 							iteratorParametrow++;
 							double s=Double.parseDouble(args[iteratorParametrow-1]);
+							if(s<=0)
+								throw new NiedodatniParametr();
 							tablicaFigur[iteratorParametrow]= new Szesciokat(s);
 							iteratorFigur++;
 							break;
@@ -80,18 +91,22 @@ public class Geometria{
 							throw new NiezdefiniowanaFigura();
 					}
 				}
+				catch(NiedodatniParametr a){
+					if(args[0].charAt(i)=='c')
+						iteratorParametrow=start+4;
+					System.out.println(args[0].charAt(i)+": Parametry dla figury powinny byc wieksze od zera!!!");
+				}
 				catch(NumberFormatException e){
 					if(args[0].charAt(i)=='c')
-						iteratorParametrow=start+5;
-	
-					System.out.println("Podano niewlasciwy parametr dla argumentu: "+args[0].charAt(i));
+						iteratorParametrow=start+4;
+					System.out.println(args[0].charAt(i)+": Podano niewlasciwy parametr dla argumentu.");
 
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					System.out.println("Dla: \""+args[0].charAt(i)+"\" podano za malo parametrow");
+					System.out.println(+args[0].charAt(i)+": podano za malo parametrow");
 				}
 				catch(NiezdefiniowanaFigura e){
-					System.out.println("Nie zdefiniowano zachowania dla: "+args[0].charAt(i));
+					System.out.println(args[0].charAt(i)+": nie znam takiej figury");
 				}
 			}
 			for(int i=0;i<iteratorFigur;i++)
@@ -110,7 +125,7 @@ public class Geometria{
 				else if(tablicaFigur[i] instanceof Romb)
 					s="Romb";
 				System.out.println("");
-				System.out.println("Dla figury "+s+" \""+tablicaFigur[i].pokazParametry()+"\" pole to: "+tablicaFigur[i].obliczPole()+" a obwod to: "+tablicaFigur[i].obliczObwod());
+				System.out.println(tablicaFigur[i].pokazParametry()+" --- Dla figury "+s+" pole="+tablicaFigur[i].obliczPole()+" a obwod="+tablicaFigur[i].obliczObwod());
 			}
 		}
 		catch(BrakArgumentow e){
