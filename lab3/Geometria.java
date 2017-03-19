@@ -93,12 +93,12 @@ public class Geometria{
 				}
 				catch(NiedodatniParametr a){
 					if(args[0].charAt(i)=='c')
-						iteratorParametrow=start+4;
+						iteratorParametrow=start+5;
 					System.out.println(args[0].charAt(i)+": Parametry dla figury powinny byc wieksze od zera!!!");
 				}
 				catch(NumberFormatException e){
 					if(args[0].charAt(i)=='c')
-						iteratorParametrow=start+4;
+						iteratorParametrow=start+5;
 					System.out.println(args[0].charAt(i)+": Podano niewlasciwy parametr dla argumentu.");
 
 				}
