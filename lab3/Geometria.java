@@ -82,7 +82,7 @@ public class Geometria{
 							double s=Double.parseDouble(args[iteratorParametrow-1]);
 							if(s<=0)
 								throw new NiedodatniParametr();
-							tablicaFigur[iteratorParametrow]= new Szesciokat(s);
+							tablicaFigur[iteratorFigur]= new Szesciokat(s);
 							iteratorFigur++;
 							break;
 						default:
@@ -101,7 +101,7 @@ public class Geometria{
 
 				}
 				catch(ArrayIndexOutOfBoundsException e){
-					System.out.println(+args[0].charAt(i)+": podano za malo parametrow");
+					System.out.println(args[0].charAt(i)+": podano za malo parametrow");
 				}
 				catch(NiezdefiniowanaFigura e){
 					System.out.println(args[0].charAt(i)+": nie znam takiej figury");
@@ -133,8 +133,6 @@ public class Geometria{
 			System.out.println("p - pieciokat");
 			System.out.println("s - szesciokat");
 		}
-		/*catch(KoniecProgramu e){
-			System.out.println("Koniec Programu");
-		}*/
+		
 	}
 }
