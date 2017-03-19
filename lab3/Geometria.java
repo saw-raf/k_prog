@@ -44,24 +44,22 @@ public class Geometria{
 								if(c[j]<=0)
 									throw new NiedodatniParametr();
 							}
-							double kat=Double.parseDouble(args[iteratorParametrow]);
+							iteratorParametrow++;
+							double kat=Double.parseDouble(args[iteratorParametrow-1]);
 							if(kat<=0)
 								throw new NiedodatniParametr();
 							try{
 								tablicaFigur[iteratorFigur]= new Kwadrat(c[0],c[1],c[2],c[3],kat);
-								iteratorParametrow++;
 								iteratorFigur++;
 							}
 							catch(NieKwadrat e){
 								try{
 									tablicaFigur[iteratorFigur]= new Prostokat(c[0],c[1],c[2],c[3],kat);
-									iteratorParametrow++;
 									iteratorFigur++;
 								}
 								catch(NieProstokat f){
 									try{
 										tablicaFigur[iteratorFigur]= new Romb(c[0],c[1],c[2],c[3],kat);
-										iteratorParametrow++;
 										iteratorFigur++;
 									}
 									catch(NieRomb g)
