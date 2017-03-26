@@ -1,8 +1,15 @@
 import static java.lang.Math.*;
 
+class BrakArgumentow extends Exception {}
+class BrakParametrow extends Exception {}
+class NiezdefiniowanaFigura extends Exception {}
+class KoniecProgramu extends Exception {}
+class NiedodatniParametr extends Exception {}
+
+
 public class Figura{
 	public enum K1{
-		OKRAG(0), KWADRAT(0), PIECIOKAT(0), SZESCIOKAT(0);
+		OKRAG(1), KWADRAT(1), PIECIOKAT(1), SZESCIOKAT(1);
 		
 		private double parametr;
 		
@@ -51,6 +58,42 @@ public class Figura{
 	}
 	
 	public enum K2{
+		PROSTOKAT(1,1),ROMB(1,1);
+		
+		private double parametr;
+		private double parametr2;
+		
+		K2(double parametr, double parametr2){
+			this.parametr=parametr;
+			this.parametr2=parametr2;
+		}
+		double obliczObwod(){
+			
+			switch(this){
+				
+				case PROSTOKAT:
+					return (2*(parametr+parametr2));
+					
+				case ROMB:
+					return 4*parametr;
+			}
+			
+			return -1;
+		}
+		
+		double obliczPole(){
+			
+			switch(this){
+				
+				case PROSTOKAT:
+					return (parametr*parametr2);
+					
+				case ROMB:
+					return parametr*parametr*Math.sin(Math.toRadians(parametr2));	
+			}
+			
+		return -1;
+		}
 		
 	}
 	
