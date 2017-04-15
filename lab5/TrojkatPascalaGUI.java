@@ -108,7 +108,7 @@ class MyFrame extends Frame{
 	public void action(){
 		try{
 				int rozmiar=Integer.parseInt(size.getText())+1;
-					if(rozmiar<0 || rozmiar>29) throw new OutOfRangeException();
+					if(rozmiar<1 || rozmiar>30) throw new OutOfRangeException();
 				rightPanel.removeAll();
 				rightPanel.setBackground(new Color(0,97,131));
 				Label[] arrayLabel=new Label[rozmiar];
