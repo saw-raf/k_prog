@@ -9,6 +9,11 @@ WierszTrojkataPascala::WierszTrojkataPascala(int n)
 		wiersz[i]=wiersz[i-1]*(n-(i-1))/i;
 }
 
+WierszTrojkataPascala::~WierszTrojkataPascala(int n)
+{
+	delete[] wiersz;
+}
+
 int WierszTrojkataPascala::wspolczynnik(int m) throw (string)
 {
 	if(m>=rozmiar || m<0)
